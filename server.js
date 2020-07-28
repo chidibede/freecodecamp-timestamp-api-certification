@@ -49,7 +49,6 @@ app.get("/api/timestamp/:date_string", function (req, res) {
 // API endpoint Incase no parameter is passed
 app.get("/api/timestamp", (req, res) => {
   dateObj = new Date();
-  console.log(dateObj)
   let utc_date = getUtcDate(dateObj);
   // let unix_date_to_utc = parseInt((dateObj.getTime() / 1000).toFixed(0));
   let unix_date = parseInt((dateObj.getTime()).toFixed(0));
@@ -61,7 +60,6 @@ app.get("/api/timestamp", (req, res) => {
 
 // listen for requests :)
 let env_port = process.env.PORT;
-let local_port = 3000;
 var listener = app.listen(env_port, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
