@@ -34,7 +34,9 @@ app.get("/api/timestamp/:date_string", function (req, res) {
     res.json({ unix: unix_date, utc: utc_date });
   } else if (parseInt(new Date(date_string).getTime().toFixed(0)) > 0) {
     let unix_date = parseInt(date_string);
-    let utc_date = unix_date.toUTCString();
+    let dateObj = new Date(unix_date);
+    console.log(unix_date)
+    let utc_date = dateObj.toUTCString();
     res.json({ unix: unix_date, utc: utc_date });
   } else {
     res.json({ error: "Invalid Date" });
