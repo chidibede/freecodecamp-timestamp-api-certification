@@ -26,7 +26,7 @@ app.get("/api/timestamp/:date_string", function (req, res) {
   if(moment(date_string, 'YYYY-MM-DD', true).isValid()){
     dateObj = new Date(date_string)
     unix_date = parseInt((dateObj.getTime()).toFixed(0))
-    utc_date = getUtcDate(dateObj) 
+    utc_date = dateObj.toUTCString()
     res.json({ unix: unix_date, utc: utc_date });
   } else if(moment(date_string, 'YYYY-MM-D', true).isValid()){
     dateObj = new Date(date_string)
