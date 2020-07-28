@@ -24,20 +24,20 @@ app.get("/", function (req, res) {
 app.get("/api/timestamp/:date_string", function (req, res) {
   let date_string = req.params.date_string;
   if(moment(date_string, 'YYYY-MM-DD', true).isValid()){
-    dateObj = new Date(date_string)
-    unix_date = parseInt((dateObj.getTime()).toFixed(0))
-    utc_date = dateObj.toUTCString()
+    let dateObj = new Date(date_string)
+    let unix_date = parseInt((dateObj.getTime()).toFixed(0))
+    let utc_date = dateObj.toUTCString()
     res.json({ unix: unix_date, utc: utc_date });
   } else if(moment(date_string, 'YYYY-MM-D', true).isValid()){
-    dateObj = new Date(date_string)
-    unix_date = parseInt((dateObj.getTime()).toFixed(0))
-    utc_date = getUtcDate(dateObj) 
+    let dateObj = new Date(date_string)
+    let unix_date = parseInt((dateObj.getTime()).toFixed(0))
+    let utc_date = dateObj.toUTCString() 
     res.json({ unix: unix_date, utc: utc_date });
   
   }else if(new Date(date_string).getTime() > 0){
-    unix_date = parseInt(date_string)
-    dateObj = new Date(unix_date * 1000)
-    utc_date = getUtcDate(dateObj) 
+    let unix_date = parseInt(date_string)
+    let dateObj = new Date(unix_date * 1000)
+    let utc_date = dateObj.toUTCString()
     res.json({ unix: unix_date, utc: utc_date });
   }else{
     res.json({error: "Invalid Date"})
@@ -49,7 +49,7 @@ app.get("/api/timestamp/:date_string", function (req, res) {
 // API endpoint Incase no parameter is passed
 app.get("/api/timestamp", (req, res) => {
   dateObj = new Date();
-  let utc_date = getUtcDate(dateObj);
+  let utc_date = dateObj.toUTCString()
   // let unix_date_to_utc = parseInt((dateObj.getTime() / 1000).toFixed(0));
   let unix_date = parseInt((dateObj.getTime()).toFixed(0));
   res.json({
