@@ -18,7 +18,12 @@ module.exports = function getUtcDate(dateObj) {
     let month = month_array[dateObj.getMonth()];
     let day = day_array[dateObj.getDay()];
     let hours = dateObj.getHours();
-    let mins = dateObj.getMinutes();
+    let mins = dateObj.getMinutes()
+    if (mins < 10){
+      mins = '0' + mins
+    } else{
+      mins= ''+mins
+    }
     let seconds = dateObj.getSeconds();
     let date = dateObj.getDate();
     let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
