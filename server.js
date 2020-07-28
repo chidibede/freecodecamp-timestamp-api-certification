@@ -32,7 +32,7 @@ app.get("/api/timestamp/:date_string", function (req, res) {
     let unix_date = parseInt(dateObj.getTime().toFixed(0));
     let utc_date = dateObj.toUTCString();
     res.json({ unix: unix_date, utc: utc_date });
-  } else if (new Date(date_string).getTime() > 0) {
+  } else if (parseInt(new Date(date_string).getTime().toFixed(0)) > 0) {
     let unix_date = parseInt(date_string);
     let utc_date = unix_date.toUTCString();
     res.json({ unix: unix_date, utc: utc_date });
