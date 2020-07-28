@@ -60,6 +60,6 @@ app.get("/api/timestamp", (req, res) => {
 // listen for requests :)
 let env_port = process.env.PORT;
 let local_port = 3000;
-var listener = app.listen(local_port || env_port, function () {
+var listener = app.listen(env_port, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
